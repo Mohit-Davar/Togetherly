@@ -1,4 +1,5 @@
 import { Formik, Field, Form, ErrorMessage, useFormikContext } from "formik";
+import { FC } from "react";
 import * as Yup from "yup";
 
 interface MyFormValues {
@@ -7,6 +8,11 @@ interface MyFormValues {
     email: string;
     password: string;
     birthdate: Date;
+}
+interface InputField {
+    name: string;
+    type: string;
+    label: string;
 }
 
 export default function SignupForm(): JSX.Element {
@@ -37,21 +43,28 @@ export default function SignupForm(): JSX.Element {
             .required("Required Field"),
     });
 
-    const { errors, touched } = useFormikContext<MyFormValues>();
-    
-    return (
-      <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={alert}
-      >
-            <Form>
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="password" />
-                <ErrorMessage name="password" />
+    const InputField: FC<InputField> = ({ name, type, label }) => {
+        const { errors, touched } = useFormikContext<MyFormValues>();
+
+        return (
+            <div>
+                <label htmlFor={name}>{label}</label>
+                <Field name={name} type={type} />
                 {errors.password && touched.password && (
                     <div style={{ color: "red" }}>{errors.password}</div>
                 )}
+            </div>
+        );
+    };
+
+    return (
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={alert}
+        >
+            <Form>
+                <InputField name="firstName" type="text" label="First Name"/>
             </Form>
         </Formik>
     );

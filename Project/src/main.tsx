@@ -10,7 +10,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import SignupForm from "./components/signup.tsx";
+import SignupForm from "./components/SignUp/signup.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
