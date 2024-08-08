@@ -1,6 +1,6 @@
-import { Formik, Field, Form, ErrorMessage, useFormikContext } from "formik";
-import { FC } from "react";
 import * as Yup from "yup";
+import { Formik, Form } from "formik";
+import InputField from "./InputField";
 
 interface MyFormValues {
     firstName: string;
@@ -8,11 +8,6 @@ interface MyFormValues {
     email: string;
     password: string;
     birthdate: Date;
-}
-interface InputField {
-    name: string;
-    type: string;
-    label: string;
 }
 
 export default function SignupForm(): JSX.Element {
@@ -43,29 +38,30 @@ export default function SignupForm(): JSX.Element {
             .required("Required Field"),
     });
 
-    const InputField: FC<InputField> = ({ name, type, label }) => {
-        const { errors, touched } = useFormikContext<MyFormValues>();
-
-        return (
-            <div>
-                <label htmlFor={name}>{label}</label>
-                <Field name={name} type={type} />
-                {errors.password && touched.password && (
-                    <div style={{ color: "red" }}>{errors.password}</div>
-                )}
-            </div>
-        );
-    };
+    function handleSubmit(values: MyFormValues) {
+        alert(JSON.stringify(values, null, 2));
+    }
 
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={alert}
-        >
-            <Form>
-                <InputField name="firstName" type="text" label="First Name"/>
-            </Form>
-        </Formik>
+        <main className="bg-slate-700 min-h-screen text-white">
+            <h1 className="">SignUp</h1>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+            >
+                <Form>
+                    <InputField
+                        Name="firstName"
+                        Type="text"
+                        Label="First Name"
+                        Placeholder="Mohit"
+                    />
+                    <InputField Name="lastName" Type="text" Label="Last Name" Placeholder="Davar"/>
+                    <InputField Name="email" Type="email" Label="Email" Placeholder="example@gmail.com"/>
+                    <button type="submit">Submit</button>
+                </Form>
+            </Formik>
+        </main>
     );
 }
