@@ -1,0 +1,9 @@
+input:not(:placeholder-shown)+label {
+    top: -8px;
+    font-size: 14px;
+    color: #15803d;
+    background-color: #ffffff;
+    padding: 0 4px;
+    border-radius: 2px;
+    left: 8px;
+}

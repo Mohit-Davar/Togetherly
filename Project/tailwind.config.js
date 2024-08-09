@@ -6,8 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
-        "themeOne":""
+      fontFamily: {
+        Roboto: ["Roboto", "sans-sarif"],
+        Poppins: ["Poppins", "sans-sarif"],
       }
     },
   },

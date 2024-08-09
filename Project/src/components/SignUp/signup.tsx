@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import InputField from "./InputField";
+import { Link } from "react-router-dom";
 
 interface MyFormValues {
     firstName: string;
@@ -43,25 +44,35 @@ export default function SignupForm(): JSX.Element {
     }
 
     return (
-        <main className="bg-slate-700 min-h-screen text-white">
-            <h1 className="">SignUp</h1>
+        <main className="min-h-screen flex justify-center items-center bg-gradient-to-l from-">
+            <div className="flex-col gap-10">
+            <h1 className="font-extrabold text-3xl font-Roboto mb-10">Create Your Account</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                <Form>
+                <Form className="flex flex-col gap-3 h-auto font-Poppins">
                     <InputField
                         Name="firstName"
                         Type="text"
-                        Label="First Name"
-                        Placeholder="Mohit"
+                        Label="First Name*"
                     />
-                    <InputField Name="lastName" Type="text" Label="Last Name" Placeholder="Davar"/>
-                    <InputField Name="email" Type="email" Label="Email" Placeholder="example@gmail.com"/>
-                    <button type="submit">Submit</button>
+                    <InputField
+                        Name="lastName"
+                        Type="text"
+                        Label="Last Name*"
+                    />
+                    <InputField
+                        Name="email"
+                        Type="email"
+                        Label="Email*"
+                    />
+                    <button type="submit" className="mt-5 w-full bg-emerald-600 rounded-lg text-white px-4 py-2 hover:bg-emerald-900 transition-all duration-100 ease-linear">Submit</button>
                 </Form>
             </Formik>
+            <p>Already have an account?</p> <Link to/>
+            </div>
         </main>
     );
 }
