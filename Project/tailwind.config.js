@@ -9,6 +9,15 @@ export default {
       fontFamily: {
         Roboto: ["Roboto", "sans-sarif"],
         Poppins: ["Poppins", "sans-sarif"],
+      },
+      colors:{
+        themeTwo:"#b721ff",
+        themeOne:"#21d4fd",
+        themeThree:"#1eae98",
+        themeFour:"white"
+      },
+      boxShadow:{
+        form:"5px 5px 15px 0px rgba(0,0,0,0.5)"
       }
     },
   },

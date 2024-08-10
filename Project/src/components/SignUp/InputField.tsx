@@ -1,5 +1,4 @@
 import { Field, ErrorMessage } from "formik";
-import React from "react";
 import "./placeholder-not-shown.css";
 
 interface inputField {
@@ -15,21 +14,22 @@ const InputField: React.FC<inputField> = ({ Name, Label, Type }) => {
                 name={Name}
                 component="div"
                 className="text-red-500 text-xs"
-            />
+            ></ErrorMessage>
             <Field
                 name={Name}
                 type={Type}
                 component="input"
-                className="border-2 rounded-lg border-gray-300 px-4 py-3 transition-all duration-300 ease-linear outline-none focus:border-green-700 peer w-full"
+                className="border-2 rounded-lg border-gray-300 px-4 py-3 transition-all duration-300 ease-linear outline-none focus:border-themeTwo peer w-full bg-themeFour"
                 placeholder=""
-            />
+            ></Field>
             <label
                 htmlFor={Name}
-                className="top-3 left-3 text-gray-500 absolute transition-all ease-linear duration-200 peer-focus:text-green-700 peer-focus:text-sm peer-focus:bg-white peer-focus:px-1 peer-focus:rounded-sm peer-focus:-top-2 peer-focus:left-2 pointer-events-none"
+                className="top-3 left-3 text-gray-500 absolute transition-all ease-linear duration-200 peer-focus:text-themeTwo peer-focus:text-sm peer-focus:bg-themeFour peer-focus:px-1 peer-focus:rounded-sm peer-focus:-top-2 peer-focus:left-2 pointer-events-none"
             >
                 {Label}
             </label>
         </div>
     );
 };
+
 export default InputField;

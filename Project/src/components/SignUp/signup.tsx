@@ -1,77 +1,169 @@
 import * as Yup from "yup";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field} from "formik";
 import InputField from "./InputField";
 import { Link } from "react-router-dom";
-
+import React, { useState } from "react";
+import "./placeholder-not-shown.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 interface MyFormValues {
-    firstName: string;
-    lastName: string;
+    username: string;
     email: string;
     password: string;
-    birthdate: Date;
 }
 
 export default function SignupForm(): JSX.Element {
     const initialValues: MyFormValues = {
-        firstName: "",
-        lastName: "",
+        username: "",
         email: "",
         password: "",
-        birthdate: new Date(),
     };
 
     const validationSchema = Yup.object({
-        firstName: Yup.string()
+        username: Yup.string()
             .max(10, "Must be 10 characters or less")
-            .required("Required Field"),
-        lastName: Yup.string()
-            .max(15, "Must be 15 characters or less")
             .required("Required Field"),
         email: Yup.string()
             .email("Invalid email address")
             .required("Required Field"),
-        birthDate: Yup.date()
-            .min(new Date(1900, 0, 1), "Rest your eyes Oldie!")
-            .max(new Date(), "Let's be real, you haven't been born yet!!!")
-            .required("Required Field"),
         password: Yup.string()
-            .min(8, "Password should contain minimum of 8 words")
-            .required("Required Field"),
+            .required("Required Field")
+            .matches(/[a-z]/, " ")
+            .matches(/[A-Z]/, " ")
+            .matches(/[0-9]/, " ")
+            .min(12, "Minimum 12 characters"),
     });
 
     function handleSubmit(values: MyFormValues) {
-        alert(JSON.stringify(values, null, 2));
+        alert(JSON.stringify(values));
+    }
+
+    const [visibility, setVisibility] = useState("password");
+    const [char, setChar] = useState("");
+
+    function toggleVisibility() {
+        if (visibility == "text") {
+            setVisibility("password");
+        } else {
+            setVisibility("text");
+        }
     }
 
     return (
-        <main className="min-h-screen flex justify-center items-center bg-gradient-to-l from-">
-            <div className="flex-col gap-10">
-            <h1 className="font-extrabold text-3xl font-Roboto mb-10">Create Your Account</h1>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
-                <Form className="flex flex-col gap-3 h-auto font-Poppins">
-                    <InputField
-                        Name="firstName"
-                        Type="text"
-                        Label="First Name*"
-                    />
-                    <InputField
-                        Name="lastName"
-                        Type="text"
-                        Label="Last Name*"
-                    />
-                    <InputField
-                        Name="email"
-                        Type="email"
-                        Label="Email*"
-                    />
-                    <button type="submit" className="mt-5 w-full bg-emerald-600 rounded-lg text-white px-4 py-2 hover:bg-emerald-900 transition-all duration-100 ease-linear">Submit</button>
-                </Form>
-            </Formik>
-            <p>Already have an account?</p> <Link to/>
+        <main className="min-h-screen flex justify-center items-center bg-gradient-to-br via-themeOne from-themeThree  to-themeTwo">
+            <div className="flex-col gap-10 bg-themeFour px-20 py-16 rounded-2xl shadow-form">
+                <h1 className="font-extrabold text-3xl font-Roboto mb-5 bg-clip-text bg-gradient-to-r from-themeTwo to-themeOne text-transparent">
+                    Create Your Account
+                </h1>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
+                    validateOnChange={true}
+                    validateOnBlur={true}
+                >
+                    {({ setFieldValue }) => (
+                        <Form className="flex flex-col gap-3 h-auto font-Poppins">
+                            <InputField
+                                Name="username"
+                                Type="text"
+                                Label="Username*"
+                            />
+                            <InputField
+                                Name="email"
+                                Type="email"
+                                Label="Email*"
+                            />
+                            <div className="Password relative flex gap-2 items-center">
+                                <Field
+                                    name="password"
+                                    type={visibility}
+                                    component="input"
+                                    className="border-2 rounded-lg border-gray-300 px-4 py-3 transition-all duration-300 ease-linear outline-none focus:border-themeTwo peer w-full bg-themeFour"
+                                    placeholder=""
+                                    value={char}
+                                    onChange={(
+                                        e: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        setFieldValue(
+                                            "password",
+                                            e.target.value
+                                        );
+                                        setChar(e.target.value);
+                                    }}
+                                ></Field>
+                                <label
+                                    htmlFor="password"
+                                    className="top-3 left-3 text-gray-500 absolute transition-all ease-linear duration-200 peer-focus:text-themeTwo peer-focus:text-sm peer-focus:bg-themeFour peer-focus:px-1 peer-focus:rounded-sm peer-focus:-top-2 peer-focus:left-2 pointer-events-none"
+                                >
+                                    Password*
+                                </label>
+                                <div
+                                    className="eye hover:bg-orange-50 cursor-pointer rounded-full p-2 text-sm text-gray-500 aspect-square"
+                                    onClick={toggleVisibility}
+                                >
+                                    <FontAwesomeIcon icon={faEye} />
+                                </div>
+                            </div>
+                            <div
+                                className={`border-2 border-gray-300 text-xs p-3 rounded-lg ${
+                                    char.length > 0 ? "visible" : "hidden"
+                                }`}
+                            >
+                                Your password must contain:
+                                <ul className="list-inside list-disc">
+                                    <li
+                                        className={`${
+                                            char.length >= 12
+                                                ? "text-green-500"
+                                                : "text-red-500"
+                                        }`}
+                                    >
+                                        At least 12 characters ({char.length}
+                                        /12)
+                                    </li>
+                                    <li
+                                        className={`${
+                                            /[a-z]/.test(char)
+                                                ? "text-green-500"
+                                                : "text-red-500"
+                                        }`}
+                                    >
+                                        At least one Lower case letter
+                                    </li>
+                                    <li
+                                        className={`${
+                                            /[0-9]/.test(char)
+                                                ? "text-green-500"
+                                                : "text-red-500"
+                                        }`}
+                                    >
+                                        At least one number
+                                    </li>
+                                    <li
+                                        className={`${
+                                            /[A-Z]/.test(char)
+                                                ? "text-green-500"
+                                                : "text-red-500"
+                                        }`}
+                                    >
+                                        At least one Upper case letter
+                                    </li>
+                                </ul>
+                            </div>
+                            <button
+                                type="submit"
+                                className="mt-2 w-full bg-themeOne rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear"
+                            >
+                                Submit
+                            </button>
+                        </Form>
+                    )}
+                </Formik>
+                <span>Already have an account?</span>
+                <span className="text-themeOne hover:text-themeTwo transition-all ml-2">
+                    <Link to="user/login">Log in</Link>
+                </span>
             </div>
         </main>
     );
