@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import "./placeholder-not-shown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import Togetherly from "../../../public/Images/Togetherly.png";
+
 interface MyFormValues {
     username: string;
     email: string;
@@ -51,8 +53,12 @@ export default function SignupForm(): JSX.Element {
 
     return (
         <main className="min-h-screen flex justify-center items-center bg-gradient-to-br via-themeOne from-themeThree  to-themeTwo">
-            <div className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
-                <img src="Images/Togetherly.png" alt="Logo" className="size-28 mx-auto my-5" />
+            <section className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
+                <img
+                    src={Togetherly}
+                    alt="Logo"
+                    className="size-28 mx-auto my-5"
+                />
                 <h1 className="font-extrabold text-3xl font-Roboto mb-5 bg-clip-text bg-gradient-to-r from-themeTwo to-themeOne text-transparent">
                     Create Your Account
                 </h1>
@@ -76,7 +82,7 @@ export default function SignupForm(): JSX.Element {
                                 Type="email"
                                 Label="Email*"
                             />
-                            <div className="Password relative flex gap-2 items-center">
+                            <article className="Password relative flex gap-2 items-center">
                                 <Field
                                     name="password"
                                     type={visibility}
@@ -100,19 +106,19 @@ export default function SignupForm(): JSX.Element {
                                 >
                                     Password*
                                 </label>
-                                <div
+                                <p
                                     className="eye hover:bg-orange-50 cursor-pointer rounded-full p-2 text-sm text-gray-500 aspect-square"
                                     onClick={toggleVisibility}
                                 >
                                     <FontAwesomeIcon icon={faEye} />
-                                </div>
-                            </div>
-                            <div
+                                </p>
+                            </article>
+                            <article
                                 className={`border-2 border-gray-300 text-xs p-3 rounded-lg ${
                                     char.length > 0 ? "visible" : "hidden"
                                 }`}
                             >
-                                Your password must contain:
+                                <p>Your password must contain:</p>
                                 <ul className="list-inside list-disc">
                                     <li
                                         className={`${
@@ -152,7 +158,7 @@ export default function SignupForm(): JSX.Element {
                                         At least one Upper case letter
                                     </li>
                                 </ul>
-                            </div>
+                            </article>
                             <button
                                 type="submit"
                                 className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${
@@ -165,11 +171,14 @@ export default function SignupForm(): JSX.Element {
                         </Form>
                     )}
                 </Formik>
-                <span>Already have an account?</span>
-                <span className="text-themeOne hover:text-themeTwo transition-all ml-2">
-                    <Link to="user/login">Log in</Link>
-                </span>
-            </div>
+                <p>
+                    Already have an account?
+                    <span className="text-themeOne hover:text-themeTwo transition-all ml-2">
+                        <Link to="/user/login">Log in</Link>
+                    </span>
+                </p>
+                <div className="g-signin2" data-onsuccess="onSignIn"></div>
+            </section>
         </main>
     );
 }

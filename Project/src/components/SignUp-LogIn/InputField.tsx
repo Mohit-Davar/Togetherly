@@ -9,7 +9,7 @@ interface inputField {
 
 const InputField: React.FC<inputField> = ({ Name, Label, Type }) => {
     return (
-        <div className="relative flex flex-col-reverse transition-all duration-200 ease-linear">
+        <article className="relative flex flex-col-reverse transition-all duration-200 ease-linear">
             <ErrorMessage
                 name={Name}
                 component="p"
@@ -28,7 +28,7 @@ const InputField: React.FC<inputField> = ({ Name, Label, Type }) => {
             >
                 {Label}
             </label>
-        </div>
+        </article>
     );
 };
 
