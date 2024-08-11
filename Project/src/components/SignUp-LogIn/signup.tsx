@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { Formik, Form, Field} from "formik";
+import { Formik, Form, Field } from "formik";
 import InputField from "./InputField";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
@@ -51,7 +51,8 @@ export default function SignupForm(): JSX.Element {
 
     return (
         <main className="min-h-screen flex justify-center items-center bg-gradient-to-br via-themeOne from-themeThree  to-themeTwo">
-            <div className="flex-col gap-10 bg-themeFour px-20 py-16 rounded-2xl shadow-form">
+            <div className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
+                <img src="Images/Togetherly.png" alt="Logo" className="size-28 mx-auto my-5" />
                 <h1 className="font-extrabold text-3xl font-Roboto mb-5 bg-clip-text bg-gradient-to-r from-themeTwo to-themeOne text-transparent">
                     Create Your Account
                 </h1>
@@ -61,8 +62,9 @@ export default function SignupForm(): JSX.Element {
                     onSubmit={handleSubmit}
                     validateOnChange={true}
                     validateOnBlur={true}
+                    // validateOnMount
                 >
-                    {({ setFieldValue }) => (
+                    {({ setFieldValue, isValid }) => (
                         <Form className="flex flex-col gap-3 h-auto font-Poppins">
                             <InputField
                                 Name="username"
@@ -153,7 +155,10 @@ export default function SignupForm(): JSX.Element {
                             </div>
                             <button
                                 type="submit"
-                                className="mt-2 w-full bg-themeOne rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear"
+                                className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${
+                                    isValid ? "bg-themeOne" : "bg-red-600"
+                                }`}
+                                disabled={!isValid}
                             >
                                 Submit
                             </button>

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
-import Home from "./components/Home.tsx";
+import Home from "./components/Home/Home.tsx";
 
 import {
   Route,
@@ -10,7 +10,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import SignupForm from "./components/SignUp/signup.tsx";
+import SignupForm from "./components/SignUp-LogIn/signup.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>

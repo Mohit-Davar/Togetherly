@@ -12,7 +12,7 @@ const InputField: React.FC<inputField> = ({ Name, Label, Type }) => {
         <div className="relative flex flex-col-reverse transition-all duration-200 ease-linear">
             <ErrorMessage
                 name={Name}
-                component="div"
+                component="p"
                 className="text-red-500 text-xs"
             ></ErrorMessage>
             <Field
