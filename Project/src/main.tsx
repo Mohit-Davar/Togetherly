@@ -16,13 +16,12 @@ import {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/">
+        <Route path="/" errorElement={<NotFound />}>
             <Route path="" element={<App />}>
-                <Route path="home" element={<Home />} />
+                <Route path="" element={<Home />} />
             </Route>
             <Route path="user/signup" element={<SignupForm />} />
             <Route path="user/login" element={<LoginForm />} />
-            <Route path="/ads" element={<NotFound />} />
         </Route>
     )
 );
