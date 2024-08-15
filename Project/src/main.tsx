@@ -17,9 +17,7 @@ import {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" errorElement={<NotFound />}>
-            <Route path="" element={<App />} >
-                <Route path="" element={<Home />} />
-            </Route>
+            <Route path="" element={<Home />} />
             <Route path="user/signup" element={<SignupForm />} />
             <Route path="user/login" element={<LoginForm />} />
         </Route>

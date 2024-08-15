@@ -17,7 +17,7 @@ export default {
         themeFour:"white"
       },
       boxShadow:{
-        form:"5px 5px 15px 0px rgba(0,0,0,0.5)"
+        form:"5px 5px 15px 0px rgba(0,0,0,0.5)",
       }
     },
   },
