@@ -10,29 +10,41 @@ export default function Navbar(): JSX.Element {
             top: "0%",
             stagger: 0.1,
             scale: 1.5,
-            ease: "ease.in" 
+            ease: "ease.in",
         });
     };
     const handleButtonLeave = () => {
         gsap.to(".getStarted div", {
-            duration: 0.5,
             top: "100%",
             scale: 1,
         });
     };
 
     return (
-        <nav className="flex justify-around items-center py-5 bg-transparent ">
-            <section className="overflow-x-hidden w-[155px]">
-                <FontAwesomeIcon icon={faCopyright} className="mr-2"/>
-                <span>Connect Together</span>
-                <span> by Togetherly</span>
+        <nav className="absolute w-full z-[100] flex justify-around items-center py-10 bg-transparent text-lg">
+            <section className="Logo overflow-hidden group font-archivoBlack flex items-center">
+                <FontAwesomeIcon
+                    icon={faCopyright}
+                    className="group-hover:rotate-[360deg] transition-all duration-300 text-themeOne"
+                />
+                <NavLink
+                    to=""
+                    component="button"
+                    className="outline-none px-1 py-1 relative before:w-full before:h-full before:top-0 before:left-0 before:content-[attr(data-before)] before:px-1 before:py-1 before:content-center before:absolute group-hover:before:translate-x-0 focus:before:translate-x-0 before:translate-x-full before:transition-transform duration-300 before:bg-gradient-to-br before:from-themeOne before:via-themeThree before:to-themeTwo before:bg-clip-text before:text-transparent group/button"
+                    data-before="#Connect"
+                >
+                    <span className="relative group-hover:-left-full group-focus/button:-left-full transition-all left-0 pointer-events-none duration-300 group-hover:opacity-0 group-focus/button:opacity-0 bg-gradient-to-br from-themeOne via-themeThree to-themeTwo bg-clip-text text-transparent">
+                        Togetherly
+                    </span>
+                </NavLink>
             </section>
-            <section>
-                <NavLink to="/user/signup" component="button"
-                    className="px-4 py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] text-xl font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0" 
-                    onMouseEnter={handleButtonEffect}
-                    onMouseLeave={handleButtonLeave}
+            <section className="SignUpBttn">
+                <NavLink
+                    to="/user/signup"
+                    component="button"
+                    className="px-4 py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0"
+                    onMouseOver={handleButtonEffect}
+                    onMouseOut={handleButtonLeave}
                     onFocus={handleButtonEffect}
                     onBlur={handleButtonLeave}
                 >

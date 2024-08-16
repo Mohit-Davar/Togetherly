@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         Roboto: ["Roboto", "sans-sarif"],
         Poppins: ["Poppins", "sans-sarif"],
+        archivoBlack: ["Archivo Black", "sans-sarif"],
       },
       colors:{
         themeTwo:"#b721ff",

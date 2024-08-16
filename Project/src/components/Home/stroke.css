@@ -1,0 +1,4 @@
+.heading::before{
+    -webkit-text-stroke: 1px #21d4fd;
+    content: "Learn. Connect. Share. ";
+}
