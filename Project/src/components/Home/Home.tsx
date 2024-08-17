@@ -1,7 +1,9 @@
 import Navbar from "../Includes/Navbar";
 import HeroSection from "./HeroSection";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MarqueeText from "./MarqueeText";
 
 function Home() {
     const cursor = useRef<HTMLDivElement>(null);
@@ -16,7 +18,7 @@ function Home() {
                     backgroundColor: "transparent",
                 });
             }
-            blur.current?.classList.add("hidden")
+            blur.current?.classList.add("hidden");
         } else {
             if (cursor.current) {
                 cursor.current.classList.replace("size-20", "size-3");
@@ -24,37 +26,64 @@ function Home() {
                     background: "#21d4fd",
                 });
             }
-            blur.current?.classList.remove("hidden")
+            blur.current?.classList.remove("hidden");
         }
         let cursorRect = cursor.current?.getBoundingClientRect() as DOMRect;
         let blurRect = blur.current?.getBoundingClientRect() as DOMRect;
+        const scrollX = window.scrollX || 0;
+        const scrollY = window.scrollY || 0;
         gsap.to(cursor.current, {
-            x: e.clientX - cursorRect.width / 2,
-            y: e.clientY - cursorRect.height / 2,
+            x: e.clientX + scrollX - cursorRect.width / 2,
+            y: e.clientY + scrollY - cursorRect.height / 2,
             duration: 0.2,
             ease: "power1.out",
         });
         gsap.to(blur.current, {
-            x: e.clientX - blurRect.width / 2,
-            y: e.clientY - blurRect.height / 2,
+            x: e.clientX + scrollX - blurRect.width / 2,
+            y: e.clientY + scrollY - blurRect.height / 2,
             duration: 1,
             ease: "sine.out",
         });
     };
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mainElement = document.querySelector("main");
+
+    if (mainElement) {
+        gsap.to(mainElement, {
+            background: "black",
+            scrollTrigger: {
+                trigger: mainElement,
+                scroller: "body",
+                scrub: true,
+                start: "top -25%",
+                end: "top -110%",
+                invalidateOnRefresh: true,
+                refreshPriority: -1,
+            },
+        });
+        ScrollTrigger.refresh();
+    }
+
     return (
-        <div className="mainContainer relative overflow-x-hidden" onMouseMove={handleCursor}>
+        <div
+            className="mainContainer relative overflow-x-hidden selection:bg-white selection:text-themeTwo"
+            onMouseMove={handleCursor}
+        >
             <div
-                className="cursor size-3 rounded-full absolute bg-themeOne z-[999] pointer-events-none border-themeOne border-2"
+                className="cursor size-3 rounded-full absolute bg-themeOne z-50 pointer-events-none border-themeOne border-2 transition-colors duration-500"
                 ref={cursor}
+                style={{ transition: "width .5s, height 0.5s" }}
             ></div>
             <div
-                className="cursor size-36 rounded-full absolute bg-themeOne z-[998] pointer-events-none blur-[100px] opacity-90"
+                className="cursor size-52 rounded-full absolute bg-themeOne z-50 pointer-events-none blur-[100px] opacity-90"
                 ref={blur}
             ></div>
 
             <Navbar />
-            <main>
+            <main className="overflow-hidden min-h-[600vh]">
                 <HeroSection />
+                <MarqueeText />
             </main>
         </div>
     );

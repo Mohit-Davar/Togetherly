@@ -21,7 +21,7 @@ export default function Navbar(): JSX.Element {
     };
 
     return (
-        <nav className="absolute w-full z-[100] flex justify-around items-center py-10 bg-transparent text-lg">
+        <nav className="absolute w-full z-40 flex justify-between px-10 items-center py-10 bg-transparent text-lg">
             <section className="Logo overflow-hidden group font-archivoBlack flex items-center">
                 <FontAwesomeIcon
                     icon={faCopyright}
@@ -42,7 +42,7 @@ export default function Navbar(): JSX.Element {
                 <NavLink
                     to="/user/signup"
                     component="button"
-                    className="px-4 py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0"
+                    className="select-none px-4 py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0"
                     onMouseOver={handleButtonEffect}
                     onMouseOut={handleButtonLeave}
                     onFocus={handleButtonEffect}

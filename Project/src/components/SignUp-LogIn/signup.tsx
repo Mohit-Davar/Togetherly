@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import "./placeholder-not-shown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import Togetherly from "../../../public/Images/Togetherly.png";
 
 interface MyFormValues {
     username: string;
@@ -55,7 +54,7 @@ export default function SignupForm(): JSX.Element {
         <main className="min-h-screen flex justify-center items-center bg-gradient-to-br via-themeOne from-themeThree  to-themeTwo">
             <section className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
                 <img
-                    src={Togetherly}
+                    src="/Images/Togetherly.png"
                     alt="Logo"
                     className="size-28 mx-auto my-5"
                 />

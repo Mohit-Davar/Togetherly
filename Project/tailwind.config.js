@@ -10,6 +10,7 @@ export default {
         Roboto: ["Roboto", "sans-sarif"],
         Poppins: ["Poppins", "sans-sarif"],
         archivoBlack: ["Archivo Black", "sans-sarif"],
+        alfaSlabOne: ["Alfa Slab One", "sans-sarif"],
       },
       colors:{
         themeTwo:"#b721ff",
