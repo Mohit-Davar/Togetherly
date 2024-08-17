@@ -1,6 +1,0 @@
-let handleCursor;
-const cursor = useRef<HTMLDivElement>(null);
-if (cursor.current) {
-    const rect = cursor.current.getBoundingClientRect();
-
-}

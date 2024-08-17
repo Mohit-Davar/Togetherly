@@ -1,9 +1,9 @@
 import Navbar from "../Includes/Navbar";
-import HeroSection from "./HeroSection";
+import HeroSection from "./HeroSection/HeroSection";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MarqueeText from "./MarqueeText";
+import MarqueeText from "./Marquee/MarqueeText";
 
 function Home() {
     const cursor = useRef<HTMLDivElement>(null);
@@ -30,41 +30,45 @@ function Home() {
         }
         let cursorRect = cursor.current?.getBoundingClientRect() as DOMRect;
         let blurRect = blur.current?.getBoundingClientRect() as DOMRect;
-        const scrollX = window.scrollX || 0;
-        const scrollY = window.scrollY || 0;
         gsap.to(cursor.current, {
-            x: e.clientX + scrollX - cursorRect.width / 2,
-            y: e.clientY + scrollY - cursorRect.height / 2,
+            x: e.pageX - cursorRect.width / 2,
+            y: e.pageY - cursorRect.height / 2,
             duration: 0.2,
             ease: "power1.out",
         });
         gsap.to(blur.current, {
-            x: e.clientX + scrollX - blurRect.width / 2,
-            y: e.clientY + scrollY - blurRect.height / 2,
+            x: e.pageX - blurRect.width / 2,
+            y: e.pageY - blurRect.height / 2,
             duration: 1,
             ease: "sine.out",
         });
     };
-    gsap.registerPlugin(ScrollTrigger);
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    const mainElement = document.querySelector("main");
+        const mainElement = document.querySelector("main");
 
-    if (mainElement) {
-        gsap.to(mainElement, {
-            background: "black",
-            scrollTrigger: {
-                trigger: mainElement,
-                scroller: "body",
-                scrub: true,
-                start: "top -25%",
-                end: "top -110%",
-                invalidateOnRefresh: true,
-                refreshPriority: -1,
-            },
-        });
+        if (mainElement) {
+            gsap.to(mainElement, {
+                background: "black",
+                scrollTrigger: {
+                    trigger: mainElement,
+                    scroller: "body",
+                    scrub: true,
+                    start: "top -25%",
+                    end: "top -110%",
+                    invalidateOnRefresh: true,
+                    refreshPriority: -1,
+                },
+            });
+        }
+
         ScrollTrigger.refresh();
-    }
 
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+    }, []);
     return (
         <div
             className="mainContainer relative overflow-x-hidden selection:bg-white selection:text-themeTwo"

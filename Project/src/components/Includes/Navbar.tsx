@@ -17,6 +17,8 @@ export default function Navbar(): JSX.Element {
         gsap.to(".getStarted div", {
             top: "100%",
             scale: 1,
+            stagger: -0.1,
+            duration: 0.5,
         });
     };
 
