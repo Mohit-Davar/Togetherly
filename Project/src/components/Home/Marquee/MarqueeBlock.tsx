@@ -1,6 +1,7 @@
 import MarqueeSpan from "./MarqueeSpan";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+// import "./marquee.css"
 interface MarqueeCopyProps {
     array: Array<string>;
 }
@@ -28,7 +29,7 @@ const MarqueeBlock: React.FC<MarqueeCopyProps> = ({ array }) => {
     }, []);
     return (
         <div className="marquee inline-block" ref={marqueeRef}>
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-10">
                 {array.map((span, index) => (
                     <MarqueeSpan key={index} text={span} />
                 ))}

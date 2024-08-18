@@ -10,7 +10,7 @@ export default function MarqueeText(): JSX.Element {
 
     return (
         <section
-            className="marqueeSection w-full h-auto whitespace-nowrap text-8xl font-alfaSlabOne text-black cursor-default gap-5 flex"
+            className="marqueeSection w-full whitespace-nowrap text-8xl font-alfaSlabOne text-black cursor-default gap-10 flex mb-20"
             style={{ WebkitTextStroke: "2px white" }}
         >
             <MarqueeCopy array={copy} />

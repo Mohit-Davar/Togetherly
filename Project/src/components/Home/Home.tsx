@@ -1,9 +1,10 @@
-import Navbar from "../Includes/Navbar";
-import HeroSection from "./HeroSection/HeroSection";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Navbar from "../Includes/Navbar";
+import HeroSection from "./HeroSection/HeroSection";
 import MarqueeText from "./Marquee/MarqueeText";
+import TiltCards from "./TiltCards/TiltCards";
 
 function Home() {
     const cursor = useRef<HTMLDivElement>(null);
@@ -69,25 +70,29 @@ function Home() {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         };
     }, []);
+
     return (
         <div
             className="mainContainer relative overflow-x-hidden selection:bg-white selection:text-themeTwo"
             onMouseMove={handleCursor}
         >
-            <div
-                className="cursor size-3 rounded-full absolute bg-themeOne z-50 pointer-events-none border-themeOne border-2 transition-colors duration-500"
-                ref={cursor}
-                style={{ transition: "width .5s, height 0.5s" }}
-            ></div>
-            <div
-                className="cursor size-52 rounded-full absolute bg-themeOne z-50 pointer-events-none blur-[100px] opacity-90"
-                ref={blur}
-            ></div>
+            <aside className="cursor-backgrounds">
+                <div
+                    className="cursor size-3 rounded-full absolute bg-themeOne z-50 pointer-events-none border-themeOne border-2 transition-colors duration-500"
+                    ref={cursor}
+                    style={{ transition: "width .5s, height 0.5s" }}
+                ></div>
+                <div
+                    className="cursor size-52 rounded-full absolute bg-themeOne z-50 pointer-events-none blur-[100px] opacity-90"
+                    ref={blur}
+                ></div>
+            </aside>
 
             <Navbar />
             <main className="overflow-hidden min-h-[600vh]">
                 <HeroSection />
                 <MarqueeText />
+                <TiltCards />
             </main>
         </div>
     );
