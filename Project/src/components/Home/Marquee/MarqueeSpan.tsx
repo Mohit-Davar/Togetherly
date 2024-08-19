@@ -1,25 +1,10 @@
 interface MarqueeSpanProps {
     text: string;
 }
+import "./stroke.css";
 const MarqueeSpan: React.FC<MarqueeSpanProps> = ({ text }) => {
-    const handleColourChange = (e: React.MouseEvent<HTMLSpanElement>) => {
-        const spanElement = e.currentTarget;
-        spanElement.classList.replace("text-black", "text-themeOne");
-        spanElement.style.webkitTextStroke = "2px transparent";
-    };
-
-    const handleColourReversal = (e: React.MouseEvent<HTMLSpanElement>) => {
-        const spanElement = e.currentTarget;
-        spanElement.classList.replace("text-themeOne", "text-black");
-        spanElement.style.webkitTextStroke = "2px white";
-    };
-
     return (
-        <span
-            onMouseEnter={handleColourChange}
-            onMouseLeave={handleColourReversal}
-            className="transition-all duration-300 text-black "
-        >
+        <span className="transition-all hover:bg-gradient-to-r hover:from-themeOne hover:to-themeTwo hover:via-themeThree text-transparent bg-clip-text py-10 ">
             {text}
         </span>
     );

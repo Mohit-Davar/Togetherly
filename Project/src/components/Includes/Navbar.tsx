@@ -23,7 +23,10 @@ export default function Navbar(): JSX.Element {
     };
 
     return (
-        <nav className="absolute w-full z-40 flex justify-between px-10 items-center py-10 bg-transparent text-lg">
+        <nav
+            className="absolute w-full z-40 flex justify-between px-10 items-center py-10 bg-transparent text-lg"
+            data-scroll-section
+        >
             <section className="Logo overflow-hidden group font-archivoBlack flex items-center">
                 <FontAwesomeIcon
                     icon={faCopyright}

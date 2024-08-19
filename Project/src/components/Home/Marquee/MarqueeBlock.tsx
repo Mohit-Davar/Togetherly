@@ -1,7 +1,6 @@
 import MarqueeSpan from "./MarqueeSpan";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-// import "./marquee.css"
 interface MarqueeCopyProps {
     array: Array<string>;
 }
@@ -12,7 +11,6 @@ const MarqueeBlock: React.FC<MarqueeCopyProps> = ({ array }) => {
 
     useEffect(() => {
         if (marqueeRef.current) {
-            marqueeRef.current.style.willChange = "transform";
             animationRef.current = gsap.to(marqueeRef.current, {
                 xPercent: -100,
                 repeat: -1,

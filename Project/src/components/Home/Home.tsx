@@ -1,10 +1,12 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../Includes/Navbar";
 import HeroSection from "./HeroSection/HeroSection";
 import MarqueeText from "./Marquee/MarqueeText";
 import TiltCards from "./TiltCards/TiltCards";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/src/locomotive-scroll.scss";
 
 function Home() {
     const cursor = useRef<HTMLDivElement>(null);
@@ -70,11 +72,30 @@ function Home() {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         };
     }, []);
+    const scrollRef = useRef(null);
+    if (scrollRef.current) {
+        const scrollContainer=scrollRef.current
+        useEffect(() => {
+            const scroll = new LocomotiveScroll({
+                el: scrollContainer,
+                smooth: true,
+                // Add more options as needed
+                multiplier: 1.5, // To control the speed of the scroll
+                // class: "is-reveal", // To add a class when elements are revealed in view
+            });
+    
+            return () => {
+                if (scroll) scroll.destroy();
+            };
+        }, []);
+    }
 
     return (
         <div
             className="mainContainer relative overflow-x-hidden selection:bg-white selection:text-themeTwo"
             onMouseMove={handleCursor}
+            data-scroll-container
+            ref={scrollRef}
         >
             <aside className="cursor-backgrounds">
                 <div
@@ -89,7 +110,7 @@ function Home() {
             </aside>
 
             <Navbar />
-            <main className="overflow-hidden min-h-[600vh]">
+            <main className="overflow-hidden min-h-[600vh]" data-scroll-section>
                 <HeroSection />
                 <MarqueeText />
                 <TiltCards />
