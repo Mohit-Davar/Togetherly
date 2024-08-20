@@ -1,11 +1,7 @@
 import "./stroke.css";
 function HeroSection() {
     return (
-        <section
-            className="heroSection h-screen w-full relative flex justify-center items-center"
-            data-scroll
-            data-scroll-speed="1"
-        >
+        <section className="heroSection h-screen w-full relative flex justify-center items-center">
             <video
                 autoPlay
                 loop
