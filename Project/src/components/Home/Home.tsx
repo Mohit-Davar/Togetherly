@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef} from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../Includes/Navbar";
@@ -73,7 +73,7 @@ function Home() {
 
     return (
         <div
-            className="mainContainer relative overflow-x-hidden selection:bg-white selection:text-themeTwo"
+            className="mainContainer relative overflow-hidden selection:bg-white selection:text-themeTwo"
             onMouseMove={handleCursor}
         >
             <aside className="cursor-backgrounds">
@@ -89,11 +89,13 @@ function Home() {
             </aside>
 
             <Navbar />
-            <main className="overflow-hidden min-h-[600vh]">
+            <main>
                 <HeroSection />
                 <MarqueeText />
                 <TiltCards />
             </main>
+            <div className="bg-transparent min-h-screen"></div>
+            <footer className="min-h-screen w-screen bg-red-600 -z-20 fixed top-0"></footer>
         </div>
     );
 }

@@ -7,7 +7,7 @@ function HeroSection() {
                 loop
                 muted
                 src="Videos/MeetVideo.mp4"
-                className="fixed object-cover -z-20"
+                className="fixed object-cover -z-30"
             ></video>
             <div className="blackScreen bg-gradient-to-b from-gray-800  to-black w-screen h-full -z-10 opacity-70 fixed"></div>
             <div className="text flex flex-col space-y-5 justify-center items-center cursor-default">
