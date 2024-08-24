@@ -1,14 +1,41 @@
-import React, { useRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import Navbar from "../Includes/Navbar";
 import HeroSection from "./HeroSection/HeroSection";
 import MarqueeText from "./Marquee/MarqueeText";
 import TiltCards from "./TiltCards/TiltCards";
 import handleCursor from "../../Utils/handleCursor";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 function Home() {
     const cursor = useRef<HTMLDivElement>(null);
     const blur = useRef<HTMLDivElement>(null);
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
+        const mainElement = document.querySelector("main");
+
+        if (mainElement) {
+            gsap.to(mainElement, {
+                background: "black",
+                scrollTrigger: {
+                    trigger: mainElement,
+                    scroller: "body",
+                    scrub: true,
+                    start: "top -25%",
+                    end: "top -110%",
+                    invalidateOnRefresh: true,
+                    refreshPriority: -1,
+                },
+            });
+        }
+
+        ScrollTrigger.refresh();
+
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+    }, []);
     return (
         <div
             className="mainContainer relative overflow-hidden selection:bg-white selection:text-themeTwo"
@@ -34,8 +61,6 @@ function Home() {
                 <MarqueeText />
                 <TiltCards />
             </main>
-            <div className="bg-transparent min-h-screen"></div>
-            <footer className="min-h-screen w-screen bg-red-600 -z-20 fixed top-0"></footer>
         </div>
     );
 }

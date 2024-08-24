@@ -1,6 +1,5 @@
-import React, { useLayoutEffect} from "react";
+import React from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const handleCursor = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -40,31 +39,5 @@ const handleCursor = (
         ease: "sine.out",
     });
 };
-useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const mainElement = document.querySelector("main");
-
-    if (mainElement) {
-        gsap.to(mainElement, {
-            background: "black",
-            scrollTrigger: {
-                trigger: mainElement,
-                scroller: "body",
-                scrub: true,
-                start: "top -25%",
-                end: "top -110%",
-                invalidateOnRefresh: true,
-                refreshPriority: -1,
-            },
-        });
-    }
-
-    ScrollTrigger.refresh();
-
-    return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-}, []);
 
 export default handleCursor;
