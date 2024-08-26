@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 
 import Home from "./components/Home/Home.tsx";
 import SignupForm from "./components/SignUp-LogIn/signup.tsx";

@@ -1,6 +1,7 @@
-span:hover {
-    -webkit-text-stroke: 2px black;
-}
-section.marquee-text{
+li{
     -webkit-text-stroke: 2px white;
+    transition: all .2s linear;
+}
+li:hover {
+    -webkit-text-stroke: 2px black;
 }

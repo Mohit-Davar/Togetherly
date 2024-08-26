@@ -1,12 +1,11 @@
-import MarqueeSpan from "./MarqueeSpan";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 type MarqueeBlockProps = {
-    array: Array<string>;
+    quotes: string[];
 }
 
-export default function MarqueeBlock({ array }: MarqueeBlockProps): React.JSX.Element {
+export default function MarqueeBlock({ quotes }: MarqueeBlockProps): React.JSX.Element {
     const marqueeRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<gsap.core.Tween>();
 
@@ -28,11 +27,13 @@ export default function MarqueeBlock({ array }: MarqueeBlockProps): React.JSX.El
     }, []);
     return (
         <div className="marquee inline-block" ref={marqueeRef}>
-            <div className="flex justify-center gap-10">
-                {array.map((span, index) => (
-                    <MarqueeSpan key={index} text={span} />
+            <ul className="flex justify-center gap-10">
+                {quotes.map((quote, index) => (
+                    <li key={index} className="hover:bg-gradient-to-r hover:from-themeOne hover:to-themeTwo hover:via-themeThree text-transparent bg-clip-text py-10 ">
+                        {quote}
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 };

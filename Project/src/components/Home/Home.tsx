@@ -7,7 +7,7 @@ import handleCursor from "../../Utils/handleCursor";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-function Home():React.JSX.Element {
+function Home(): React.JSX.Element {
     const cursor = useRef<HTMLDivElement>(null);
     const blur = useRef<HTMLDivElement>(null);
     useLayoutEffect(() => {
@@ -17,7 +17,7 @@ function Home():React.JSX.Element {
 
         if (mainElement) {
             gsap.to(mainElement, {
-                background: "black",
+                backgroundColor: 'rgba(0, 0, 0, 1)',
                 scrollTrigger: {
                     trigger: mainElement,
                     scroller: "body",
@@ -56,7 +56,7 @@ function Home():React.JSX.Element {
             </aside>
 
             <Navbar />
-            <main>
+            <main className="bg-black bg-opacity-70">
                 <HeroSection />
                 <MarqueeText />
                 <TiltCards />

@@ -11,10 +11,9 @@ export default function HeroSection(): React.JSX.Element {
                 src="Videos/MeetVideo.mp4"
                 className="fixed object-cover -z-30"
             ></video>
-            <div className="blackScreen bg-gradient-to-b from-gray-800  to-black w-screen h-full -z-10 opacity-70 fixed"></div>
-            <div className="text flex flex-col space-y-5 justify-center items-center cursor-default">
+            <div className="text flex flex-col space-y-5 justify-center items-center cursor-default z-0">
                 <h1
-                    className={String.raw`text-white text-[clamp(2rem,6vw,100rem)] font-archivoBlack relative before:absolute before:text-black before:w-full before:h-full before:-top-2 before:-left-2 before:-z-10 heading`}
+                    className={String.raw`text-white text-[clamp(2rem,6vw,100rem)] font-archivoBlack relative before:absolute before:text-black before:w-full before:h-full before:-top-1 before:-left-1 before:-z-10 heading`}
                 >
                     Learn. Connect. Share.
                 </h1>
