@@ -7,7 +7,7 @@ import handleCursor from "../../Utils/handleCursor";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-function Home() {
+function Home():React.JSX.Element {
     const cursor = useRef<HTMLDivElement>(null);
     const blur = useRef<HTMLDivElement>(null);
     useLayoutEffect(() => {

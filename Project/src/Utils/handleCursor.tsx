@@ -7,25 +7,22 @@ const handleCursor = (
     blur: React.RefObject<HTMLDivElement>
 ) => {
     const hoveredElement = e.target as HTMLElement;
+    if (!(cursor.current && blur.current)) return
     if (hoveredElement.tagName.toLowerCase() === "a") {
-        if (cursor.current) {
-            cursor.current.classList.replace("size-3", "size-20");
-            gsap.to(cursor.current, {
-                backgroundColor: "transparent",
-            });
-        }
-        blur.current?.classList.add("hidden");
+        cursor.current.classList.replace("size-3", "size-20");
+        gsap.to(cursor.current, {
+            backgroundColor: "transparent",
+        });
+        blur.current.classList.add("hidden");
     } else {
-        if (cursor.current) {
-            cursor.current.classList.replace("size-20", "size-3");
-            gsap.to(cursor.current, {
-                background: "#21d4fd",
-            });
-        }
-        blur.current?.classList.remove("hidden");
+        cursor.current.classList.replace("size-20", "size-3");
+        gsap.to(cursor.current, {
+            background: "#21d4fd",
+        });
+        blur.current.classList.remove("hidden");
     }
-    let cursorRect = cursor.current?.getBoundingClientRect() as DOMRect;
-    let blurRect = blur.current?.getBoundingClientRect() as DOMRect;
+    let cursorRect = cursor.current.getBoundingClientRect();
+    let blurRect = blur.current.getBoundingClientRect();
     gsap.to(cursor.current, {
         x: e.pageX - cursorRect.width / 2,
         y: e.pageY - cursorRect.height / 2,

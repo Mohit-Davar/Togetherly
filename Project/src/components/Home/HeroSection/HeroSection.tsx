@@ -1,5 +1,7 @@
+import React from "react";
 import "./stroke.css";
-function HeroSection() {
+
+export default function HeroSection(): React.JSX.Element {
     return (
         <section className="heroSection h-screen w-full relative flex justify-center items-center">
             <video
@@ -30,5 +32,3 @@ function HeroSection() {
         </section>
     );
 }
-
-export default HeroSection;

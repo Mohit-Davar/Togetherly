@@ -1,35 +1,33 @@
 import { Field, ErrorMessage } from "formik";
 import "./placeholder-not-shown.css";
 
-interface inputField {
+type InputFieldProps = {
     Name: string;
     Label: string;
     Type: string;
-}
+};
 
-const InputField: React.FC<inputField> = ({ Name, Label, Type }) => {
+export default function InputField({ Name, Label, Type }: InputFieldProps) {
     return (
         <article className="relative flex flex-col-reverse transition-all duration-200 ease-linear">
             <ErrorMessage
                 name={Name}
                 component="p"
-                className="text-red-500 text-xs"
+                className="text-xs text-red-500"
             ></ErrorMessage>
             <Field
                 name={Name}
                 type={Type}
                 component="input"
-                className="border-2 rounded-lg border-gray-300 px-4 py-3 transition-all duration-300 ease-linear outline-none focus:border-themeTwo peer w-full bg-themeFour"
+                className="peer w-full rounded-lg border-2 border-gray-300 bg-themeFour px-4 py-3 outline-none transition-all duration-300 ease-linear focus:border-themeTwo"
                 placeholder=""
             ></Field>
             <label
                 htmlFor={Name}
-                className="top-3 left-3 text-gray-500 absolute transition-all ease-linear duration-200 peer-focus:text-themeTwo peer-focus:text-sm peer-focus:bg-themeFour peer-focus:px-1 peer-focus:rounded-sm peer-focus:-top-2 peer-focus:left-2 pointer-events-none"
+                className="pointer-events-none absolute left-3 top-3 text-gray-500 transition-all duration-200 ease-linear peer-focus:-top-2 peer-focus:left-2 peer-focus:rounded-sm peer-focus:bg-themeFour peer-focus:px-1 peer-focus:text-sm peer-focus:text-themeTwo"
             >
                 {Label}
             </label>
         </article>
     );
-};
-
-export default InputField;
+}

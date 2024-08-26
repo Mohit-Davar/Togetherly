@@ -1,13 +1,14 @@
 import MarqueeSpan from "./MarqueeSpan";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-interface MarqueeCopyProps {
+
+type MarqueeBlockProps = {
     array: Array<string>;
 }
 
-const MarqueeBlock: React.FC<MarqueeCopyProps> = ({ array }) => {
+export default function MarqueeBlock({ array }: MarqueeBlockProps): React.JSX.Element {
     const marqueeRef = useRef<HTMLDivElement>(null);
-    const animationRef = useRef<gsap.core.Tween | null>(null);
+    const animationRef = useRef<gsap.core.Tween>();
 
     useEffect(() => {
         if (marqueeRef.current) {
@@ -35,4 +36,3 @@ const MarqueeBlock: React.FC<MarqueeCopyProps> = ({ array }) => {
         </div>
     );
 };
-export default MarqueeBlock;

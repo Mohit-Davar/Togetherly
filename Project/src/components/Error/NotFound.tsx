@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Parallax from "parallax-js";
 
-export default function NotFound(): JSX.Element {
+export default function NotFound(): React.JSX.Element {
     const sceneRef = useRef(null);
 
     useEffect(() => {

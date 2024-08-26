@@ -7,13 +7,13 @@ import "./placeholder-not-shown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-interface MyFormValues {
+type MyFormValues = {
     username: string;
     email: string;
     password: string;
 }
 
-export default function SignupForm(): JSX.Element {
+export default function SignupForm(): React.JSX.Element {
     const initialValues: MyFormValues = {
         username: "",
         email: "",
@@ -39,15 +39,11 @@ export default function SignupForm(): JSX.Element {
         alert(JSON.stringify(values));
     }
 
-    const [visibility, setVisibility] = useState("password");
-    const [char, setChar] = useState("");
+    const [visibility, setVisibility] = useState<"password" | "text">("password");
+    const [char, setChar] = useState<string>("");
 
     function toggleVisibility() {
-        if (visibility == "text") {
-            setVisibility("password");
-        } else {
-            setVisibility("text");
-        }
+        visibility == "text" ? setVisibility("password") : setVisibility("text")
     }
 
     return (
@@ -67,7 +63,7 @@ export default function SignupForm(): JSX.Element {
                     onSubmit={handleSubmit}
                     validateOnChange={true}
                     validateOnBlur={true}
-                    // validateOnMount
+                // validateOnMount
                 >
                     {({ setFieldValue, isValid }) => (
                         <Form className="flex flex-col gap-3 h-auto font-Poppins">
@@ -113,46 +109,41 @@ export default function SignupForm(): JSX.Element {
                                 </p>
                             </article>
                             <article
-                                className={`border-2 border-gray-300 text-xs p-3 rounded-lg ${
-                                    char.length > 0 ? "visible" : "hidden"
-                                }`}
+                                className={`border-2 border-gray-300 text-xs p-3 rounded-lg ${char.length > 0 ? "visible" : "hidden"
+                                    }`}
                             >
                                 <p>Your password must contain:</p>
                                 <ul className="list-inside list-disc">
                                     <li
-                                        className={`${
-                                            char.length >= 12
-                                                ? "text-green-500"
-                                                : "text-red-500"
-                                        }`}
+                                        className={`${char.length >= 12
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                            }`}
                                     >
                                         At least 12 characters ({char.length}
                                         /12)
                                     </li>
                                     <li
-                                        className={`${
-                                            /[a-z]/.test(char)
-                                                ? "text-green-500"
-                                                : "text-red-500"
-                                        }`}
+                                        className={`${/[a-z]/.test(char)
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                            }`}
                                     >
                                         At least one Lower case letter
                                     </li>
                                     <li
-                                        className={`${
-                                            /[0-9]/.test(char)
-                                                ? "text-green-500"
-                                                : "text-red-500"
-                                        }`}
+                                        className={`${/[0-9]/.test(char)
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                            }`}
                                     >
                                         At least one number
                                     </li>
                                     <li
-                                        className={`${
-                                            /[A-Z]/.test(char)
-                                                ? "text-green-500"
-                                                : "text-red-500"
-                                        }`}
+                                        className={`${/[A-Z]/.test(char)
+                                            ? "text-green-500"
+                                            : "text-red-500"
+                                            }`}
                                     >
                                         At least one Upper case letter
                                     </li>
@@ -160,9 +151,8 @@ export default function SignupForm(): JSX.Element {
                             </article>
                             <button
                                 type="submit"
-                                className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${
-                                    isValid ? "bg-themeOne" : "bg-red-600"
-                                }`}
+                                className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${isValid ? "bg-themeOne" : "bg-red-600"
+                                    }`}
                                 disabled={!isValid}
                             >
                                 Submit

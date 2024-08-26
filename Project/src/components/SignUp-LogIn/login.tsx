@@ -2,17 +2,17 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import InputField from "./InputField";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./placeholder-not-shown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-interface MyFormValues {
+type MyFormValues = {
     email: string;
     password: string;
 }
 
-export default function LoginForm(): JSX.Element {
+export default function LoginForm(): React.JSX.Element {
     const initialValues: MyFormValues = {
         email: "",
         password: "",
@@ -29,14 +29,10 @@ export default function LoginForm(): JSX.Element {
         alert(JSON.stringify(values));
     }
 
-    const [visibility, setVisibility] = useState("password");
+    const [visibility, setVisibility] = useState<"password" | "text">("password");
 
     function toggleVisibility() {
-        if (visibility == "text") {
-            setVisibility("password");
-        } else {
-            setVisibility("text");
-        }
+        visibility == "text" ? setVisibility("password") : setVisibility("text")
     }
 
     return (
@@ -56,7 +52,7 @@ export default function LoginForm(): JSX.Element {
                     onSubmit={handleSubmit}
                     validateOnChange={true}
                     validateOnBlur={true}
-                    // validateOnMount
+                // validateOnMount
                 >
                     {({ isValid }) => (
                         <Form className="flex flex-col gap-3 h-auto font-Poppins">
@@ -80,9 +76,8 @@ export default function LoginForm(): JSX.Element {
                             </div>
                             <button
                                 type="submit"
-                                className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${
-                                    isValid ? "bg-themeOne" : "bg-red-600"
-                                }`}
+                                className={`mt-2 w-full rounded-lg text-white px-4 py-2 hover:bg-themeTwo transition-all duration-300 ease-linear ${isValid ? "bg-themeOne" : "bg-red-600"
+                                    }`}
                                 disabled={!isValid}
                             >
                                 Sign In

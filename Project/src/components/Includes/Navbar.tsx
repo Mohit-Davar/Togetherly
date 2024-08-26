@@ -1,9 +1,10 @@
+import React from "react";
 import { faCopyright } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import gsap from "gsap";
 
-export default function Navbar(): JSX.Element {
+export default function Navbar(): React.JSX.Element {
     const handleButtonEffect = () => {
         gsap.to(".getStarted div", {
             duration: 0.5,

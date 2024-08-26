@@ -13,8 +13,8 @@ export default {
         alfaSlabOne: ["Alfa Slab One", "sans-sarif"],
       },
       colors:{
-        themeTwo:"#b721ff",
         themeOne:"#21d4fd",
+        themeTwo:"#b721ff",
         themeThree:"#1eae98",
         themeFour:"white"
       },
