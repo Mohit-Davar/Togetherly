@@ -25,7 +25,7 @@ export default function Navbar(): React.JSX.Element {
 
     return (
         <nav
-            className="absolute w-full z-40 flex justify-between px-10 items-center py-10 bg-transparent text-lg"
+            className="absolute w-full z-40 flex justify-between sm:px-10 px-5 items-center py-10 bg-transparent"
         >
             <section className="Logo overflow-hidden group font-archivoBlack flex items-center">
                 <FontAwesomeIcon
@@ -38,7 +38,7 @@ export default function Navbar(): React.JSX.Element {
                     className="outline-none px-1 py-1 relative before:w-full before:h-full before:top-0 before:left-0 before:content-[attr(data-before)] before:px-1 before:py-1 before:content-center before:absolute group-hover:before:translate-x-0 focus:before:translate-x-0 before:translate-x-full before:transition-transform duration-300 before:bg-gradient-to-br before:from-themeOne before:via-themeThree before:to-themeTwo before:bg-clip-text before:text-transparent group/button"
                     data-before="#Connect"
                 >
-                    <span className="relative group-hover:-left-full group-focus/button:-left-full transition-all left-0 pointer-events-none duration-300 group-hover:opacity-0 group-focus/button:opacity-0 bg-gradient-to-br from-themeOne via-themeThree to-themeTwo bg-clip-text text-transparent">
+                    <span className="relative group-hover:-left-full group-focus/button:-left-full transition-all left-0 pointer-events-none duration-300 group-hover:opacity-0 group-focus/button:opacity-0 bg-gradient-to-br from-themeOne via-themeThree to-themeTwo bg-clip-text text-transparent text-base sm:text-xl ">
                         Togetherly
                     </span>
                 </NavLink>
@@ -47,7 +47,7 @@ export default function Navbar(): React.JSX.Element {
                 <NavLink
                     to="/user/signup"
                     component="button"
-                    className="select-none px-4 py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0"
+                    className="select-none px-2 py-1 sm:px-4 sm:py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0 text-sm md:text-base"
                     onMouseOver={handleButtonEffect}
                     onMouseOut={handleButtonLeave}
                     onFocus={handleButtonEffect}

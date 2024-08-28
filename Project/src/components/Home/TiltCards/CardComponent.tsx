@@ -1,5 +1,8 @@
 import { Tilt } from "react-tilt";
-function CardComponent(): JSX.Element {
+type CardComponentProps = {
+    image: string
+}
+export default function CardComponent({ image }: CardComponentProps): JSX.Element {
     const defaultOptions = {
         reverse: false, // reverse the tilt direction
         max: 20, // max tilt rotation (degrees)
@@ -13,9 +16,8 @@ function CardComponent(): JSX.Element {
     };
     return (
         <Tilt options={defaultOptions}>
-            <article className="bg-red-500 w-96 h-[450px] origin-center"></article>
+            <article className="bg-red-500 size-96">
+            </article>
         </Tilt>
     );
 }
-
-export default CardComponent;

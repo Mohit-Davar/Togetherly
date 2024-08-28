@@ -12,7 +12,7 @@ export default function MarqueeText(): React.JSX.Element {
 
     return (
         <section
-            className="marqueeSection w-full whitespace-nowrap text-8xl font-alfaSlabOne text-black cursor-default gap-10 flex mb-20 marquee-text"
+            className="marqueeSection w-full whitespace-nowrap lg:text-8xl text-5xl font-alfaSlabOne text-black cursor-default gap-10 flex mb-20 marquee-text"
         >
             <MarqueeBlock quotes={Quotes} />
             <MarqueeBlock quotes={Quotes} />
