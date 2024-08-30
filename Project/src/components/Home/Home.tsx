@@ -6,7 +6,8 @@ import TiltCards from "./TiltCards/TiltCards";
 import handleCursor from "../../Utils/handleCursor";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import SVG from "./SVG/SVG";
+// import SVG from "./SVG/SVG";
+
 
 function Home(): React.JSX.Element {
     const cursor = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ function Home(): React.JSX.Element {
                 <HeroSection />
                 <MarqueeText />
                 <TiltCards />
-                <SVG />
+                {/* <SVG /> */}
             </main>
         </div>
     );

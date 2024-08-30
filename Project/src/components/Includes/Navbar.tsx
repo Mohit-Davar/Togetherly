@@ -43,11 +43,14 @@ export default function Navbar(): React.JSX.Element {
                     </span>
                 </NavLink>
             </section>
-            <section className="SignUpBttn">
+            <section className="SignUpBttn flex gap-10">
+                <NavLink to="/about" className="text-white px-2 py-1 sm:px-4 sm:py-2 outline-none focus:outline-2 focus:outline-themeOne rounded-3xl">
+                    About
+                </NavLink>
                 <NavLink
                     to="/user/signup"
                     component="button"
-                    className="select-none px-2 py-1 sm:px-4 sm:py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0 text-sm md:text-base"
+                    className="select-none px-2 py-1 sm:px-4 sm:py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black focus:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0 text-sm md:text-base"
                     onMouseOver={handleButtonEffect}
                     onMouseOut={handleButtonLeave}
                     onFocus={handleButtonEffect}

@@ -16,7 +16,8 @@ export default function CardComponent({ image }: CardComponentProps): JSX.Elemen
     };
     return (
         <Tilt options={defaultOptions}>
-            <article className="bg-red-500 size-96">
+            <article className="h-[550px]">
+                <img src={image} alt="Options" className="w-full h-full object-cover object-right  " />
             </article>
         </Tilt>
     );
