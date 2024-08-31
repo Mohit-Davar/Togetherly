@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import SignupForm from "./components/SignUp-LogIn/signup";
 import LoginForm from "./components/SignUp-LogIn/login";
 import NotFound from "./components/Error/NotFound";
-// import ScrollProvider from "./Utils/scrollProvider";
+import ScrollProvider from "./Utils/scrollProvider";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,8 +21,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        {/* <ScrollProvider> */}
+        <ScrollProvider>
         <RouterProvider router={router} />
-        {/* </ScrollProvider> */}
+        </ScrollProvider>
     </React.StrictMode>
 );
