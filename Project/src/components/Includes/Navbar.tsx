@@ -4,6 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import gsap from "gsap";
 
+type NavElementProps = {
+    link: string
+}
+function Navlink({ link }: NavElementProps): React.JSX.Element {
+    return (
+        <NavLink to={link} className="text-white px-2 py-1 sm:px-4 sm:py-2 outline-none focus:outline-2 focus:outline-themeOne rounded-3xl capitalize text-xl font-Roboto hover:text-black transition-colors duration-200">
+            {link}
+        </NavLink>
+    )
+}
 export default function Navbar(): React.JSX.Element {
     const handleButtonEffect = () => {
         gsap.to(".getStarted div", {
@@ -25,7 +35,7 @@ export default function Navbar(): React.JSX.Element {
 
     return (
         <nav
-            className="absolute w-full z-40 flex justify-between sm:px-10 px-5 items-center py-10 bg-transparent"
+            className="absolute w-full z-40 flex justify-around px-5 items-center py-10 bg-transparent"
         >
             <section className="Logo overflow-hidden group font-archivoBlack flex items-center">
                 <FontAwesomeIcon
@@ -35,7 +45,7 @@ export default function Navbar(): React.JSX.Element {
                 <NavLink
                     to=""
                     component="button"
-                    className="outline-none px-1 py-1 relative before:w-full before:h-full before:top-0 before:left-0 before:content-[attr(data-before)] before:px-1 before:py-1 before:content-center before:absolute group-hover:before:translate-x-0 focus:before:translate-x-0 before:translate-x-full before:transition-transform duration-300 before:bg-gradient-to-br before:from-themeOne before:via-themeThree before:to-themeTwo before:bg-clip-text before:text-transparent group/button"
+                    className="text-base sm:text-xl outline-none px-1 py-1 relative before:w-full before:h-full before:top-0 before:left-0 before:content-[attr(data-before)] before:px-1 before:py-1 before:content-center before:absolute group-hover:before:translate-x-0 focus:before:translate-x-0 before:translate-x-full before:transition-transform duration-300 before:bg-gradient-to-br before:from-themeOne before:via-themeThree before:to-themeTwo before:bg-clip-text before:text-transparent group/button"
                     data-before="#Connect"
                 >
                     <span className="relative group-hover:-left-full group-focus/button:-left-full transition-all left-0 pointer-events-none duration-300 group-hover:opacity-0 group-focus/button:opacity-0 bg-gradient-to-br from-themeOne via-themeThree to-themeTwo bg-clip-text text-transparent text-base sm:text-xl ">
@@ -43,14 +53,16 @@ export default function Navbar(): React.JSX.Element {
                     </span>
                 </NavLink>
             </section>
-            <section className="SignUpBttn flex gap-10">
-                <NavLink to="/about" className="text-white px-2 py-1 sm:px-4 sm:py-2 outline-none focus:outline-2 focus:outline-themeOne rounded-3xl">
-                    About
-                </NavLink>
+            <section className="NavItems flex justify-between items-center">
+                <Navlink link="about" />
+                <Navlink link="contact" />
+                <Navlink link="FAQ" />
+            </section>
+            <section className="SignUpButton">
                 <NavLink
                     to="/user/signup"
                     component="button"
-                    className="select-none px-2 py-1 sm:px-4 sm:py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black focus:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0 text-sm md:text-base"
+                    className="select-none px-2 py-1 sm:px-4 sm:py-2 rounded-3xl bg-black text-white overflow-hidden ring-themeOne ring-[0.3rem] font-Poppins relative z-0  p-0 hover:text-black focus:text-black getStarted flex flex-col hover:ring-0 transition-all duration-500 outline-none focus:ring-0 text-sm md:text-base ml-3"
                     onMouseOver={handleButtonEffect}
                     onMouseOut={handleButtonLeave}
                     onFocus={handleButtonEffect}

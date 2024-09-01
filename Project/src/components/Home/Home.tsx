@@ -58,7 +58,7 @@ function Home(): React.JSX.Element {
             </aside>
 
             <Navbar />
-            <main className="bg-black bg-opacity-70">
+            <main className="bg-black  bg-opacity-70">
                 <HeroSection />
                 <MarqueeText />
                 <TiltCards />
