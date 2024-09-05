@@ -1,7 +1,7 @@
 {
   "name": "togetherly",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,23 +9,20 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "author": "Mohit",
+  "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@gsap/react": "^2.1.1",
-    "@react-three/drei": "^9.109.5",
-    "@react-three/fiber": "^8.17.5",
     "@types/greensock": "^1.15.32",
     "formik": "^2.4.6",
     "gsap": "^3.12.5",
-    "locomotive-scroll": "^4.1.4",
     "parallax-js": "^3.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-locomotive-scroll": "^0.2.2",
     "react-tilt": "^1.0.2",
-    "three": "^0.167.1",
     "yup": "^1.4.0"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ const handleCursor = (
     } else {
         cursor.current.classList.replace("size-20", "size-3");
         gsap.to(cursor.current, {
-            background: "#21d4fd",
+            background: "#ca8a04",
         });
         blur.current.classList.remove("hidden");
     }

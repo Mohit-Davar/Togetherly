@@ -47,7 +47,7 @@ export default function SignupForm(): React.JSX.Element {
     }
 
     return (
-        <main className="min-h-screen flex justify-center items-center bg-gradient-to-br via-themeOne from-themeThree  to-themeTwo">
+        <main className="min-h-screen flex justify-center items-center bg-gradient-to-tl to-themeTwo via-themeThree  from-themeTwo">
             <section className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
                 <img
                     src="/Images/Togetherly.png"

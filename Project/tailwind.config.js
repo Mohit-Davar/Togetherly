@@ -1,3 +1,4 @@
+const colors = require("tailwindcss/colors")
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -13,9 +14,12 @@ export default {
         alfaSlabOne: ["Alfa Slab One", "sans-sarif"],
       },
       colors:{
-        themeOne:"#21d4fd",
-        themeTwo:"#b721ff",
-        themeThree:"#1eae98",
+        // themeOne:"#21d4fd",
+        // themeTwo:"#b721ff",
+        // themeThree:"#1eae98",
+        themeOne:colors.yellow[900],
+        themeTwo:colors.yellow[500],
+        themeThree:colors.yellow[600],
         themeFour:"white"
       },
       boxShadow:{

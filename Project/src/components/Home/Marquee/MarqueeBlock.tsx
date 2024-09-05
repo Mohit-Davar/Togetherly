@@ -29,7 +29,7 @@ export default function MarqueeBlock({ quotes }: MarqueeBlockProps): React.JSX.E
         <div className="marquee inline-block" ref={marqueeRef}>
             <ul className="flex justify-center gap-10">
                 {quotes.map((quote, index) => (
-                    <li key={index} className="hover:bg-gradient-to-r hover:from-themeOne hover:to-themeTwo hover:via-themeThree text-transparent bg-clip-text py-10 ">
+                    <li key={index} className="hover:bg-gradient-to-r hover:from-themeThree hover:to-themeThree hover:via-themeTwo text-transparent bg-clip-text py-10 ">
                         {quote}
                     </li>
                 ))}

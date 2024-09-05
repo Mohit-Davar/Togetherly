@@ -1,7 +1,7 @@
-li{
+.marquee li{
     -webkit-text-stroke: 2px white;
     transition: all .2s linear;
 }
-li:hover {
+.amrquee li:hover {
     -webkit-text-stroke: 2px black;
 }
