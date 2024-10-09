@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import SignupForm from "./components/SignUp-LogIn/signup";
 import LoginForm from "./components/SignUp-LogIn/login";
 
+// Setting up the router
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/">

@@ -21,8 +21,8 @@ const handleCursor = (
         });
         blur.current.classList.remove("hidden");
     }
-    let cursorRect = cursor.current.getBoundingClientRect();
-    let blurRect = blur.current.getBoundingClientRect();
+    const cursorRect = cursor.current.getBoundingClientRect();
+    const blurRect = blur.current.getBoundingClientRect();
     gsap.to(cursor.current, {
         x: e.pageX - cursorRect.width / 2,
         y: e.pageY - cursorRect.height / 2,

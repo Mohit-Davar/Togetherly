@@ -1,9 +1,14 @@
-import * as Yup from "yup";
-import { Formik, Form, Field } from "formik";
-import InputField from "./InputField";
-import { Link } from "react-router-dom";
 import React, { useState } from "react";
+
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+
+import { Link } from "react-router-dom";
+
+import InputField from "./InputField";
+import PasswordCondition from "./PasswordCondition";
 import "./placeholder-not-shown.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,43 +16,43 @@ type MyFormValues = {
     username: string;
     email: string;
     password: string;
+};
+
+const initialValues: MyFormValues = {
+    username: "",
+    email: "",
+    password: "",
+};
+
+const validationSchema = Yup.object({
+    username: Yup.string()
+        .max(10, "Must be 10 characters or less")
+        .required("Required Field"),
+    email: Yup.string()
+        .email("Invalid email address")
+        .required("Required Field"),
+    password: Yup.string()
+        .required("Required Field")
+        .matches(/[a-z]/, " ")
+        .matches(/[A-Z]/, " ")
+        .matches(/[0-9]/, " ")
+        .min(8, "Minimum 8 characters"),
+});
+
+function handleSubmit(values: MyFormValues) {
+    alert(JSON.stringify(values));
 }
 
 export default function SignupForm(): React.JSX.Element {
-    const initialValues: MyFormValues = {
-        username: "",
-        email: "",
-        password: "",
-    };
-
-    const validationSchema = Yup.object({
-        username: Yup.string()
-            .max(10, "Must be 10 characters or less")
-            .required("Required Field"),
-        email: Yup.string()
-            .email("Invalid email address")
-            .required("Required Field"),
-        password: Yup.string()
-            .required("Required Field")
-            .matches(/[a-z]/, " ")
-            .matches(/[A-Z]/, " ")
-            .matches(/[0-9]/, " ")
-            .min(12, "Minimum 12 characters"),
-    });
-
-    function handleSubmit(values: MyFormValues) {
-        alert(JSON.stringify(values));
-    }
-
     const [visibility, setVisibility] = useState<"password" | "text">("password");
     const [char, setChar] = useState<string>("");
 
     function toggleVisibility() {
-        visibility == "text" ? setVisibility("password") : setVisibility("text")
+        visibility === "text" ? setVisibility("password") : setVisibility("text");
     }
 
     return (
-        <main className="min-h-screen flex justify-center items-center bg-gradient-to-tl to-themeTwo via-themeThree  from-themeTwo">
+        <main className="min-h-screen flex justify-center items-center bg-gradient-to-tl to-themeTwo via-themeThree from-themeTwo">
             <section className="flex-col gap-10 bg-themeFour px-20 pb-16 rounded-2xl shadow-form">
                 <img
                     src="/Images/Togetherly.png"
@@ -63,7 +68,6 @@ export default function SignupForm(): React.JSX.Element {
                     onSubmit={handleSubmit}
                     validateOnChange={true}
                     validateOnBlur={true}
-                // validateOnMount
                 >
                     {({ setFieldValue, isValid }) => (
                         <Form className="flex flex-col gap-3 h-auto font-Poppins">
@@ -114,39 +118,24 @@ export default function SignupForm(): React.JSX.Element {
                             >
                                 <p>Your password must contain:</p>
                                 <ul className="list-inside list-disc">
-                                    <li
-                                        className={`${char.length >= 12
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                            }`}
-                                    >
-                                        At least 12 characters ({char.length}
-                                        /12)
-                                    </li>
-                                    <li
-                                        className={`${/[a-z]/.test(char)
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                            }`}
-                                    >
-                                        At least one Lower case letter
-                                    </li>
-                                    <li
-                                        className={`${/[0-9]/.test(char)
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                            }`}
-                                    >
-                                        At least one number
-                                    </li>
-                                    <li
-                                        className={`${/[A-Z]/.test(char)
-                                            ? "text-green-500"
-                                            : "text-red-500"
-                                            }`}
-                                    >
-                                        At least one Upper case letter
-                                    </li>
+                                    <PasswordCondition
+                                        condition={char.length >= 12}
+                                        label="At least 12 characters"
+                                        currentCount={char.length}
+                                        requiredCount={12}
+                                    />
+                                    <PasswordCondition
+                                        condition={/[a-z]/.test(char)}
+                                        label="At least one lower case letter"
+                                    />
+                                    <PasswordCondition
+                                        condition={/[A-Z]/.test(char)}
+                                        label="At least one upper case letter"
+                                    />
+                                    <PasswordCondition
+                                        condition={/[0-9]/.test(char)}
+                                        label="At least one number"
+                                    />
                                 </ul>
                             </article>
                             <button
@@ -166,7 +155,6 @@ export default function SignupForm(): React.JSX.Element {
                         <Link to="/user/login">Log in</Link>
                     </span>
                 </p>
-                <div className="g-signin2" data-onsuccess="onSignIn"></div>
             </section>
         </main>
     );

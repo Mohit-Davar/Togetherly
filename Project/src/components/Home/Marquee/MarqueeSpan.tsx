@@ -5,4 +5,4 @@ export default function MarqueeSpan({ text }: { text: string }) {
             {text}
         </span>
     );
-};
+}

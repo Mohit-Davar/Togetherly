@@ -1,9 +1,13 @@
+import React, { useState } from "react";
+
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
+
 import InputField from "./InputField";
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
 import "./placeholder-not-shown.css";
+
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,23 +16,23 @@ type MyFormValues = {
     password: string;
 }
 
+const initialValues: MyFormValues = {
+    email: "",
+    password: "",
+};
+
+const validationSchema = Yup.object({
+    email: Yup.string()
+        .email("Invalid email address")
+        .required("Required Field"),
+    password: Yup.string().required("Required Field"),
+});
+
+function handleSubmit(values: MyFormValues) {
+    alert(JSON.stringify(values));
+}
+
 export default function LoginForm(): React.JSX.Element {
-    const initialValues: MyFormValues = {
-        email: "",
-        password: "",
-    };
-
-    const validationSchema = Yup.object({
-        email: Yup.string()
-            .email("Invalid email address")
-            .required("Required Field"),
-        password: Yup.string().required("Required Field"),
-    });
-
-    function handleSubmit(values: MyFormValues) {
-        alert(JSON.stringify(values));
-    }
-
     const [visibility, setVisibility] = useState<"password" | "text">("password");
 
     function toggleVisibility() {

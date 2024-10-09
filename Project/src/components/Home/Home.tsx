@@ -1,11 +1,13 @@
 import React, { useRef, useLayoutEffect } from "react";
+
 import Navbar from "../Includes/Navbar";
 import HeroSection from "./HeroSection/HeroSection";
 import MarqueeText from "./Marquee/MarqueeText";
-import TiltCards from "./TiltCards/TiltCards";
 import handleCursor from "../../Utils/handleCursor";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import About from "./About-Us/About";
 
 
 function Home(): React.JSX.Element {
@@ -60,7 +62,7 @@ function Home(): React.JSX.Element {
             <main className="bg-black  bg-opacity-70">
                 <HeroSection />
                 <MarqueeText />
-                <TiltCards />
+                <About />
             </main>
         </div>
     );
